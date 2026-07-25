@@ -168,9 +168,10 @@ function Sidebar({ view, setView, pendingCount, onUploadClick, user, onLogout })
   ];
   return (
     <div className="w-60 bg-navy text-paper p-5 flex flex-col gap-1">
-      <div className="flex items-center justify-between gap-2.5 px-2 pb-6">
+      {/* Brand Header Stacked with Language Switcher */}
+      <div className="flex flex-col gap-3.5 px-2 pb-6">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gold flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-gold flex items-center justify-center shrink-0">
             <Scale size={17} className="text-navy" />
           </div>
           <div>
@@ -178,8 +179,14 @@ function Sidebar({ view, setView, pendingCount, onUploadClick, user, onLogout })
             <div className="text-[10px] opacity-60 tracking-wide mt-0.5">{t("brand.tagline")}</div>
           </div>
         </div>
-        <LanguageSwitcher />
+        
+        {/* Language Switcher Row */}
+        <div>
+          <LanguageSwitcher />
+        </div>
       </div>
+
+      {/* Navigation Links */}
       {items.map((it) => {
         const Icon = it.icon;
         const active = view === it.key;
@@ -204,6 +211,7 @@ function Sidebar({ view, setView, pendingCount, onUploadClick, user, onLogout })
         );
       })}
 
+      {/* Footer / User Details */}
       <div className="mt-auto border-t border-white/10 pt-3.5">
         <div className="px-2 mb-2.5">
           <div className="text-sm font-semibold text-[#EFD9A5] truncate">{user?.full_name}</div>
